@@ -49,10 +49,12 @@ let days = [
       let temperatureElement = document.querySelector("#temperature");
       let humidityElement = document.querySelector("#humidity");
       let precipitationElement = document.querySelector("#precipitation");
+      let descriptionElement = document.querySelector("#description");
       temperatureElement.innerHTML = `${temperature}ºC`;
       cityElement.innerHTML = response.data.name;
       humidityElement.innerHTML = response.data.main.humidity;
       precipitationElement.innerHTML = response.rain;
+      descriptionElement.innerHTML = response.data.weather[0].description;
     }
     
     let form = document.querySelector("#search-form");
