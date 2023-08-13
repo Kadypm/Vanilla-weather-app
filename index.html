@@ -7,8 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Fira+Sans:wght@300;400&family=Noto+Sans+Vithkuqi&family=PT+Sans&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="src/style.css">
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>  
+<link rel="stylesheet" href="src/style.css">
 
 <title>Weather App</title>
 </head>
@@ -55,7 +56,16 @@
                         class="float-left"
                          />
                         <div class="float-left">
-                            <strong id="temperature">12</strong><span class="units">ºC |<a href="">ºF</a></span>
+                            <strong id="temperature">12</strong>
+                            <span class="units">
+                                <a href="#" id="celcius-link" class="active">
+                                    ºC
+                                </a> 
+                                |
+                                <a href="#" id="fahrenheit-link">
+                                    ºF
+                                </a>
+                            </span>
                          </div>
                     </div>
                 </div>

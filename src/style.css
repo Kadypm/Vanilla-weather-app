@@ -7,6 +7,9 @@ ul {
     margin:0;
     padding:0;
 }
+h1{
+    color:#253b4f;
+}
 
 li {
     list-style: none;
@@ -31,7 +34,7 @@ li {
 }
 
  .city{
-    color: #253b4f;
+    color: #1E3C65;
     font-size: 30px;
     text-align: left;
     font-weight: 400;
@@ -66,4 +69,14 @@ li {
     background-color: rgba(235,156,3,0.7);
     color: #fff;
 
+}
+
+.weather-temperature .active {
+    color: #1E3C65;
+    cursor: default;
+    text-decoration: none;
+}
+
+.weather-temperature .active:hover{
+    text-decoration: none;
 }

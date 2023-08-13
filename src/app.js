@@ -39,9 +39,9 @@ let days = [
     function searchCity(city) {
       let apiKey = "eb508ef6233a171a1bdb79ec0ccb8c7a";
       let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      
       axios.get(`${apiUrl}`).then(showTemperature);
     }
+    
     
     function showTemperature(response){
         
@@ -53,6 +53,7 @@ let days = [
       let feels_likeElement = document.querySelector("#feels_like");
       let iconElement = document.querySelector("#icon");
 
+      celciusTemperature = Math.round(response.data.main.temp);
 
       temperatureElement.innerHTML = `${temperature}ºC`;
       cityElement.innerHTML = response.data.name;
@@ -61,9 +62,38 @@ let days = [
       feels_likeElement.innerHTML = Math.round(response.data.main.feels_like);
       iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     }
+
+    function displayFahrenheitTemperature(event){
+        event.preventDefault();
+
+
+        celciusLink.classList.remove("active");
+        fahrenheitLink.classList.add("active");
+
+        let fahrenheitTemperature = Math.round((celciusTemperature*9)/5 +32);
+        let temperatureElement = document.querySelector("#temperature");
+        temperatureElement.innerHTML = fahrenheitTemperature;
+    }
+
+    function displayCelciusTemperature(event){
+        event.preventDefault();
+
+        celciusLink.classList.add("active");
+        fahrenheitLink.classList.remove("active");
+        let temperatureElement = document.querySelector("#temperature");
+        temperatureElement.innerHTML = celciusTemperature;
+    }
+
+    let celciusTemperature = null;
     
+    let fahrenheitLink = document.querySelector("#fahrenheit-link");
+    fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+    
+    let celciusLink = document.querySelector("#celcius-link");
+    celciusLink.addEventListener("click", displayCelciusTemperature);
+
     let form = document.querySelector("#search-form");
     form.addEventListener("submit", search);
     
-    
+ 
   
