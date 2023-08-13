@@ -8,7 +8,7 @@ function formatDate(timestamp) {
     let minutes = date.getMinutes();
     if (minutes < 10) {
       minutes = `0${ minutes }`;
-      return fulltime;
+    
     }
     let days = [
       "Sunday",
@@ -19,13 +19,11 @@ function formatDate(timestamp) {
       "Friday",
       "Saturday"
     ];
-    let day = date.getDay();
-    return `${ days[day] } ${ hours }:${ minutes }`;
+
+    let day = days[date.getDay()];
+    return `${days[day] } ${ hours }:${ minutes }`;
   }
 
-  let dateElement = document.querySelector("#date");
-  let currentTime = new Date();
-  
   
   
     function search(event) {
