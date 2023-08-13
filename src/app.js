@@ -43,18 +43,23 @@ let days = [
       axios.get(`${apiUrl}`).then(showTemperature);
     }
     
-    function showTemperature(response) {    
+    function showTemperature(response){
+        
       let cityElement = document.querySelector("#city");
       let temperature = Math.round(response.data.main.temp);
       let temperatureElement = document.querySelector("#temperature");
       let humidityElement = document.querySelector("#humidity");
-      let precipitationElement = document.querySelector("#precipitation");
       let descriptionElement = document.querySelector("#description");
+      let feels_likeElement = document.querySelector("#feels_like");
+      let iconElement = document.querySelector("#icon");
+
+
       temperatureElement.innerHTML = `${temperature}ºC`;
       cityElement.innerHTML = response.data.name;
-      humidityElement.innerHTML = response.data.main.humidity;
-      precipitationElement.innerHTML = response.rain;
+      humidityElement.innerHTML = Math.round(response.data.main.humidity);
       descriptionElement.innerHTML = response.data.weather[0].description;
+      feels_likeElement.innerHTML = Math.round(response.data.main.feels_like);
+      iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     }
     
     let form = document.querySelector("#search-form");
