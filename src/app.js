@@ -42,7 +42,48 @@ let days = [
       axios.get(`${apiUrl}`).then(showTemperature);
     }
     
+    //Forecast
+  function displayForecast(){
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHTML = `<div class="row">`;
+    let days = ["Thu", "Fri","Sat", "Sun", "Mon","Thue"];
+    days.forEach(function(day){
+        forecastHTML = 
+                forecastHTML + `
+            <div class="col-2">
+                <div class="weather-forecast-date">
+                ${day}
+                </div>
+                <img 
+                src="src/clouds.png" 
+                alt="" 
+                width="45"
+                class="image-forecast"
+                />
+                <div class="weather-forecast-temperature"> 
+                    <span class="weather-forecast-temp-max"> 
+                        18º
+                    </span> 
+                    |
+                    <span class="weather-forecast-temp-min">
+                        12º
+                    </span>
+                </div>
+            </div>`;
+
+    })
     
+  forecastHTML= forecastHTML+ `</div>`  
+    forecastElement.innerHTML= forecastHTML;
+
+  }  
+
+
+
+    
+
+
+//
     function showTemperature(response){
         
       let cityElement = document.querySelector("#city");
@@ -52,7 +93,8 @@ let days = [
       let descriptionElement = document.querySelector("#description");
       let feels_likeElement = document.querySelector("#feels_like");
       let iconElement = document.querySelector("#icon");
-
+    
+      
       celciusTemperature = Math.round(response.data.main.temp);
 
       temperatureElement.innerHTML = `${temperature}ºC`;
@@ -95,5 +137,5 @@ let days = [
     let form = document.querySelector("#search-form");
     form.addEventListener("submit", search);
     
- 
+ displayForecast();
   
