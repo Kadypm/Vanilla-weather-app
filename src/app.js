@@ -49,11 +49,11 @@ function displayForecast(response){
             forecastHTML + 
             `
             <div class="col-2">
-                <div class="weather-forecast-date">${forecastDay.daily}
+                <div class="weather-forecast-date">${forecastDay.time}
                 </div>
     
                     <img 
-                        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition[0].icon}.png"
+                        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png"
                         alt="" 
                         width="45"
                         class="image-forecast"
@@ -80,7 +80,7 @@ function displayForecast(response){
 
     function getForecast(coordinates) {
         let apiKey = "56b9a37d4289fb4202o351ecd010dta9";
-        let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
       
         axios.get(`${apiUrl}`).then(displayForecast);
       }
