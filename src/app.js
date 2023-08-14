@@ -49,23 +49,23 @@ function displayForecast(response){
             forecastHTML + 
             `
             <div class="col-2">
-                <div class="weather-forecast-date">${forecastDay.dt}
+                <div class="weather-forecast-date">${forecastDay.daily}
                 </div>
     
                     <img 
-                        src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                        src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition[0].icon}.png"
                         alt="" 
                         width="45"
                         class="image-forecast"
                     />
                 <div class="weather-forecast-temperature"> 
                     <span class="weather-forecast-temp-max"> 
-                        ${Math.round(forecastDay.temp.max)}
+                        ${Math.round(forecastDay.daily.temperature.maximum)}
                         º
                     </span> 
                     |
                     <span class="weather-forecast-temp-min">
-                    ${Math.round(forecastDay.temp.min)}
+                    ${Math.round(forecastDay.daily.temperature.minimum)}
                     º
                     </span>
                 </div>
@@ -79,8 +79,8 @@ function displayForecast(response){
 }  
 
     function getForecast(coordinates) {
-        let apiKey = "f199df5b3e79c71a20af9ba230e682cc";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+        let apiKey = "56b9a37d4289fb4202o351ecd010dta9";
+        let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
       
         axios.get(`${apiUrl}`).then(displayForecast);
       }
@@ -89,7 +89,7 @@ function displayForecast(response){
 function showTemperature(response){
         
       let cityElement = document.querySelector("#city");
-      let temperature = Math.round(response.data.main.temp);
+      let temperature = Math.round(response.data.temperature.current);
       let temperatureElement = document.querySelector("#temperature");
       let humidityElement = document.querySelector("#humidity");
       let descriptionElement = document.querySelector("#description");
@@ -97,16 +97,16 @@ function showTemperature(response){
       let iconElement = document.querySelector("#icon");
     
       
-      celciusTemperature = Math.round(response.data.main.temp);
+      celciusTemperature = Math.round(response.data.temperature.current);
 
       temperatureElement.innerHTML = `${temperature}ºC`;
-      cityElement.innerHTML = response.data.name;
-      humidityElement.innerHTML = Math.round(response.data.main.humidity);
-      descriptionElement.innerHTML = response.data.weather[0].description;
-      feels_likeElement.innerHTML = Math.round(response.data.main.feels_like);
-      iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+      cityElement.innerHTML = response.data.city;
+      humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
+      descriptionElement.innerHTML = response.data.condition.description;
+      feels_likeElement.innerHTML = Math.round(response.data.temperature.feels_like);
+      iconElement.innerHTML = response.data.condition.icon;
    
-      getForecast(response.data.coord);
+      getForecast(response.data.coordinates);
       
     }
 
@@ -139,8 +139,8 @@ function showTemperature(response){
       }
       
   function searchCity(city) {
-        let apiKey = "eb508ef6233a171a1bdb79ec0ccb8c7a";
-        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        let apiKey = "56b9a37d4289fb4202o351ecd010dta9";
+        let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
         axios.get(`${apiUrl}`).then(showTemperature);
       }
     let celciusTemperature = null;
