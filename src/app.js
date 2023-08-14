@@ -48,7 +48,7 @@ function formatDay(timestamp) {
                   forecastHTML +
                   `
                       <div class="col-2">
-                          <div class="weather-forecast-date">${forecastDay.time}
+                          <div class="weather-forecast-date">${formatDay(forecastDay.time)}
                           </div>
               
                               <img 
