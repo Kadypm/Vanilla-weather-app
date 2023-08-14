@@ -104,7 +104,7 @@ function showTemperature(response){
       humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
       descriptionElement.innerHTML = response.data.condition.description;
       feels_likeElement.innerHTML = Math.round(response.data.temperature.feels_like);
-      iconElement.innerHTML = response.data.condition.icon;
+      iconElement.setAttribute= ("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
    
       getForecast(response.data.coordinates);
       
