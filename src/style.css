@@ -1,8 +1,12 @@
 body {
     font-family: 'Fira Sans', sans-serif;
-    background: radial-gradient(328px at 2.9% 15%, rgb(191, 224, 251) 0%, rgb(232, 233, 251) 25.8%, rgb(252, 239, 250) 50.8%, rgb(234, 251, 251) 77.6%, rgb(240, 251, 244) 100.7%);
+    background: linear-gradient(57.4deg, rgb(249, 206, 183) 4.6%, rgb(234, 174, 202) 26%, rgb(210, 182, 226) 49.1%, rgb(173, 209, 242) 86.5%);
     background-repeat: no-repeat;
+    background-size: cover; /* added this */
+    background-position: center; /* added this */
+    height: 100vh; /* added this */
 }
+
 
 ul {
     margin:0;
@@ -33,7 +37,7 @@ li {
     border-radius: 10px;
     background-image: url("https://i.pinimg.com/originals/81/8e/39/818e39fcc2cb173fa779a71d3f3b338b.jpg");
     background-size: cover;
-   background-blend-mode:luminosity;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
@@ -73,7 +77,16 @@ li {
     border: none;
     background-color: rgb(119, 63, 125);
     color: #fff;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25); /* Have added a shadow */
+    transition: all 0.3s ease; /* This makes the hover transition smooth */
+}
 
+.btn:hover {
+   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+   transform: scale(1.05); 
+   background-color: #B45094; 
+   color: #fff;
+   
 }
 
 .weather-temperature .active {
@@ -87,20 +100,26 @@ li {
 }
 .weather-forecast{
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
-    color:rgb(40, 70, 109);
+    color:#F3F3F1;
+    border: 2px none rgba(37, 59, 79, 0.3);
+    border-radius: 17px;
+    background-color: linear-gradient(112.5deg, rgb(95, 10, 135) 11.4%, rgb(164, 80, 139) 60.2%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 10px;
+
     
 }
 .weather-forecast-date {
-    font-size: 18px;
+    font-size: 20px;
     opacity: 0.7;
+    padding-top: 10px;
 }
 .weather-forecast-temp-min {
    opacity: 0.7;
 }
 .weather-forecast-temperature{
-    font-size: 14px;
+    font-size: 15px;
 
 }
-
-

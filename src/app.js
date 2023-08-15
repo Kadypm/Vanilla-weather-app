@@ -94,7 +94,7 @@ function showTemperature(response){
 
       let temperature = Math.round(response.data.temperature.current);
       let temperatureElement = document.querySelector("#temperature");
-      temperatureElement.innerHTML = `${temperature}ºC`;
+      temperatureElement.innerHTML = `${temperature}`;
 
       let humidityElement = document.querySelector("#humidity");
       humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
@@ -113,25 +113,7 @@ function showTemperature(response){
       getForecast(response.data.coordinates);
     }
 
-function displayFahrenheitTemperature(event){
-        event.preventDefault();
 
-        celciusLink.classList.remove("active");
-        fahrenheitLink.classList.add("active");
-
-        let fahrenheitTemperature = Math.round((celciusTemperature*9)/5 +32);
-        let temperatureElement = document.querySelector("#temperature");
-        temperatureElement.innerHTML = fahrenheitTemperature;
-    }
-
-function displayCelciusTemperature(event){
-        event.preventDefault();
-
-        celciusLink.classList.add("active");
-        fahrenheitLink.classList.remove("active");
-        let temperatureElement = document.querySelector("#temperature");
-        temperatureElement.innerHTML = celciusTemperature;
-    }
 function search(event) {
         event.preventDefault();
         let h1 = document.querySelector("h1");
@@ -146,15 +128,6 @@ function searchCity(city) {
         axios.get(`${apiUrl}`).then(showTemperature);
       }
    
-   
-let celciusTemperature = null;
-    
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", displayCelciusTemperature);
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
