@@ -65,7 +65,6 @@ function formatDay(timestamp) {
                                   ${Math.round(forecastDay.temperature.maximum)}
                                   º
                               </span> 
-                              |
                               <span class="weather-forecast-temp-min">
                               ${Math.round(forecastDay.temperature.minimum)}
                               º
@@ -79,6 +78,7 @@ function formatDay(timestamp) {
             forecastHTML = forecastHTML + `</div>`;
             forecastElement.innerHTML = forecastHTML;
           }
+
 function getForecast(coordinates) {
         let apiKey = "56b9a37d4289fb4202o351ecd010dta9";
         let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
@@ -144,8 +144,6 @@ function searchCity(city) {
         let apiKey = "56b9a37d4289fb4202o351ecd010dta9";
         let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
         axios.get(`${apiUrl}`).then(showTemperature);
-
-    
       }
    
    
@@ -160,4 +158,4 @@ celciusLink.addEventListener("click", displayCelciusTemperature);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-  
+searchCity ("Managua");
