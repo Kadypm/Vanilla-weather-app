@@ -90,26 +90,27 @@ function getForecast(coordinates) {
 function showTemperature(response){
         
       let cityElement = document.querySelector("#city");
+      cityElement.innerHTML = response.data.city;
+
       let temperature = Math.round(response.data.temperature.current);
       let temperatureElement = document.querySelector("#temperature");
+      temperatureElement.innerHTML = `${temperature}ºC`;
+
       let humidityElement = document.querySelector("#humidity");
+      humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
+      
       let descriptionElement = document.querySelector("#description");
+      descriptionElement.innerHTML = response.data.condition.description;
+      
       let feels_likeElement = document.querySelector("#feels_like");
+      feels_likeElement.innerHTML = Math.round(response.data.temperature.feels_like);
+      
       let iconElement = document.querySelector("#icon");
+      iconElement.setAttribute("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);   
     
       
       celciusTemperature = Math.round(response.data.temperature.current);
-
-      temperatureElement.innerHTML = `${temperature}ºC`;
-      cityElement.innerHTML = response.data.city;
-      humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
-      descriptionElement.innerHTML = response.data.condition.description;
-      feels_likeElement.innerHTML = Math.round(response.data.temperature.feels_like);
-      iconElement.setAttribute= ("src", `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
-   
       getForecast(response.data.coordinates);
-
-      console.log(response.data);
     }
 
 function displayFahrenheitTemperature(event){
