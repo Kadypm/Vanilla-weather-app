@@ -33,8 +33,8 @@ li {
     max-width: 600px;
     margin: 30px auto;
     padding: 20px;
-    border: 2px solid #773F7D;
-    border-radius: 10px;
+    border: 2px none #773F7D;
+    border-radius: 15px;
     background-image: url("https://i.pinimg.com/originals/81/8e/39/818e39fcc2cb173fa779a71d3f3b338b.jpg");
     background-size: cover;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -102,19 +102,20 @@ li {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-    color:#F3F3F1;
+    color:#fff;
     border: 2px none rgba(37, 59, 79, 0.3);
     border-radius: 17px;
     background-color: linear-gradient(112.5deg, rgb(95, 10, 135) 11.4%, rgb(164, 80, 139) 60.2%);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-bottom: 10px;
+    padding: 10px;
+    
 
     
 }
 .weather-forecast-date {
     font-size: 20px;
     opacity: 0.7;
-    padding-top: 10px;
+
 }
 .weather-forecast-temp-min {
    opacity: 0.7;
